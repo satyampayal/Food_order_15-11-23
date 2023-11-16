@@ -12,8 +12,8 @@ app.use(express.json());
 app.use(cors({origin:'http://localhost:3000'}));
 dotenv.config();
 // connected with Db
-      //const url=process.env.MONGODB_URL;
-connectToDB();
+      const url=process.env.MONGODB_URL;
+connectToDB(url);
 // register start
 app.post('/register',async (req,res)=>{
     console.log(req.body);
