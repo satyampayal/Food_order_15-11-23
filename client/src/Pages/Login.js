@@ -1,10 +1,13 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link, Navigate } from 'react-router-dom'
+import { userContext } from '../userContext';
 function Login() {
   const [email,setEmail]=useState('');
   const [password,setPassword]=useState('');
    const [message,setMesage]=useState('');
    const [redirect,setRedirect]=useState(false);
+
+   const {setUserInfo}=useContext(userContext);
 
   const loginHandler=async (e)=>{
     e.preventDefault();
@@ -17,7 +20,11 @@ function Login() {
 
     })
     if(response.ok){
+      response.json().then(userInfo=>{
+        setUserInfo(()=>userInfo)
       setRedirect(()=>true);
+
+      });
 
     }
     else{
