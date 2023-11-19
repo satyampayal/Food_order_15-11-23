@@ -27,11 +27,11 @@ app.post('/register', async (req, res) => {
     const { email, password } = req.body;
     const userExist =await  USER.findOne({email});
     // console.log(userExist)
-    if (userExist.email) {
-        return res.status(409).json({
-            message: 'Already Exist',
-        })
-    }
+    // if (userExist.email) {
+    //     return res.status(409).json({
+    //         message: 'Already Exist',
+    //     })
+    // }
     const userDoc = await USER.create({
         email,
         password: bcryt.hashSync(password, salt),
