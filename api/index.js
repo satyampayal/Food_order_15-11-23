@@ -8,7 +8,7 @@ const PORT = 3001;
 const bcryt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const SECRET = 'abchkah3b3b2b38';
-
+// make some salt
 const salt = bcryt.genSaltSync(10);
 
 
